@@ -7,7 +7,7 @@ def prepare_deployment(trunk):
 def deploy():
     with lcd('/home/dohlemacher/dev/dj/production/p4/'):
         local('git pull /home/dohlemacher/dev/dj/dev/p4/')
-        local('python manage.py migrate myapp')
-        local('python manage.py test myapp')
+        local('python manage.py migrate polls')
+        local('python manage.py test polls')
         local('./manage.py runserver 127.0.0.1:8080')
 
