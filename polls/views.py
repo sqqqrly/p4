@@ -9,7 +9,7 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_poll_list'
     def get_queryset(self):
         """Return the last n published polls."""
-        return Poll.objects.order_by('-pub_date')[:5]
+        return Poll.objects.order_by('-pub_date')[:5] # Negative sign means descending order
 
 class DetailView(generic.DetailView):
     model = Poll
