@@ -1,0 +1,11 @@
+<h1>{{ poll.question }}</h1>
+<ul>
+{% comment %} 
+Ref: https://docs.djangoproject.com/en/1.6/topics/templates/
+The template system uses dot-lookup syntax to access variable attributes. In the example of {{ poll.question }}, first Django does a dictionary lookup on the object poll. Failing that, it tries an attribute lookup – which works, in this case. If attribute lookup had failed, it would’ve tried a method call followed by a list-index lookup.
+{% endcomment %}
+{% for choice in poll.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
+
