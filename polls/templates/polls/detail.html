@@ -1,11 +1,17 @@
 <h1>{{ poll.question }}</h1>
-<ul>
 {% comment %} 
 Ref: https://docs.djangoproject.com/en/1.6/topics/templates/
 The template system uses dot-lookup syntax to access variable attributes. In the example of {{ poll.question }}, first Django does a dictionary lookup on the object poll. Failing that, it tries an attribute lookup – which works, in this case. If attribute lookup had failed, it would’ve tried a method call followed by a list-index lookup.
 {% endcomment %}
+
+{% if error_message %}<p><strong>Error message: {{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'p4:vote' poll.id %}" method="post">
+{% csrf_token %}
 {% for choice in poll.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
 {% endfor %}
-</ul>
+<input type="submit" value="Vote" />
+</form>
 
