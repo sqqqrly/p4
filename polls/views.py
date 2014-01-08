@@ -15,10 +15,14 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Poll
     template_name = 'polls/detail.html'
+    def get_queryset(self):
+        return Poll.objects.filter(pub_date__lte=timezone.now())
 
 class ResultsView(generic.DetailView):
     model = Poll
     template_name = 'polls/results.html'
+    def get_queryset(self):
+        return Poll.objects.filter(pub_date__lte=timezone.now())
 
 def vote(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
