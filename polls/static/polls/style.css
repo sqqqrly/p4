@@ -1,0 +1,21 @@
+body {
+    background: gray url("images/the-silence-of-the-lambs-ingrid-stiehler.jpg") no-repeat right bottom
+}
+
+ul a {
+    color: green;
+    
+}
+
+ol a {
+    color: black;
+}
+
+#pollList {
+    padding:0;
+    margin:0;
+}
+
+#pollList li {
+    list-style-type:none;
+}

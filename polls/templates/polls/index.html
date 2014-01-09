@@ -1,11 +1,14 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"
+
 {% if latest_poll_list %}
-    <ul>
+    <ol> 
     {% for poll in latest_poll_list %}
-        {# <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li> #}
-        {# Remove hardcoded url. Look it up in polls/urls.py #}
+        {# No hardcoded urls. Look it up in polls/urls.py #}
         <li><a href="{% url 'p4:detail' poll.id %}">{{ poll.question }}</a></li>
     {% endfor %}
-    </ul>
+    </ol>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
