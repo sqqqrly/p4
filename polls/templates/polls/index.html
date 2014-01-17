@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"
 
 {% if latest_poll_list %}
-    <ol> 
+    <ol id="pollList"> 
     {% for poll in latest_poll_list %}
         {# No hardcoded urls. Look it up in polls/urls.py #}
         <li><a href="{% url 'p4:detail' poll.id %}">{{ poll.question }}</a></li>
